@@ -14,3 +14,21 @@
     --border-gray: #e0e0e0;
     --light-red:rgb(255, 248, 248);
 }
+
+/* Dark theme variables applied when <html> has class "dark" */
+html.dark {
+    --acer-green: #3dd176;
+    --gray-text: #bfc0c0;
+    --gray-hover: #ffffff;
+    --primary-text: #e6eef6;
+    --primary-hover: #2fa85a;
+    --footer-bg: #0f1724;
+    --footer-text: #e6eef6;
+    --primary-bg: #071021;
+    --herobtn-text: #dff6e7;
+    --light-green: #0b2f19;
+    --error: #ff6b6b;
+    --hover-gray: #0b1220;
+    --border-gray: #1f2a37;
+    --light-red: #2b0f0f;
+}

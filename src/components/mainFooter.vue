@@ -104,18 +104,28 @@ const newsletter = {
     </div>
   </footer>
   <!-- Divider -->
-  <div class="border-t border-gray-700"></div>
+  <div class="border-t border-[var(--border-gray)]"></div>
   <!-- Bottom Footer -->
   <div
     class="px-10 py-8 bg-[var(--primary-text)] flex flex-col md:flex-row justify-between items-center text-xs text-[var(--footer-text)] pt-5"
   >
-    <p>&copy; 2025 Acer. All rights reserved.</p>
+    <p class="bg-[var(--primary-text)]">&copy; 2025 Acer. All rights reserved.</p>
     <div class="flex gap-6 mt-4 md:mt-0">
-      <a href="#" class="hover:text-[var(--primary-hover)] transition">Privacy Policy</a>
-      <a href="#" class="hover:text-[var(--primary-hover)] transition"
+      <a
+        href="#"
+        class="text-[var(--footer-text)] hover:text-[var(--primary-hover)] transition"
+        >Privacy Policy</a
+      >
+      <a
+        href="#"
+        class="text-[var(--footer-text)] hover:text-[var(--primary-hover)] transition"
         >Terms of Service</a
       >
-      <a href="#" class="hover:text-[var(--primary-hover)] transition">Cookie Policy</a>
+      <a
+        href="#"
+        class="text-[var(--footer-text)] hover:text-[var(--primary-hover)] transition"
+        >Cookie Policy</a
+      >
     </div>
   </div>
 </template>

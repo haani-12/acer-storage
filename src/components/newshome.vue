@@ -90,7 +90,9 @@ onUnmounted(() => {
 
 <template>
   <section class="py-12 bg-[var(--primary-bg)]">
-    <h2 class="text-center text-3xl md:text-4xl font-extrabold tracking-wide mb-12">
+    <h2
+      class="text-center text-3xl md:text-4xl font-extrabold tracking-wide mb-12 text-[var(--primary-text)]"
+    >
       NEWS
     </h2>
 
@@ -123,7 +125,7 @@ onUnmounted(() => {
       <div class="mt-10 text-center">
         <button
           @click="goTonews"
-          class="cursor-pointer inline-block px-6 py-2.5 border border-[var(--gray-text)] rounded-md text-sm font-medium hover:bg-[var(--primary-hover)] hover:text-[var(--footer-text)] transition-colors"
+          class="cursor-pointer inline-block px-6 py-2.5 text-[var(--primary-text)] border border-[var(--gray-text)] rounded-md text-sm font-medium hover:bg-[var(--primary-hover)] hover:text-[var(--footer-text)] transition-colors"
         >
           News Room
         </button>
