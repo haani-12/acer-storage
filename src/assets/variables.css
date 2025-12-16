@@ -1,0 +1,16 @@
+:root{
+    --acer-green: #3dd176;
+    --gray-text: #7a7979;
+    --gray-hover: #000000;
+    --primary-text: black;
+    --primary-hover: #3dd170;
+    --footer-bg: #969393;
+    --footer-text: #fff;
+    --primary-bg: rgb(255, 255, 255);
+    --herobtn-text: #2daf5f;
+    --light-green: #e6ffed;
+    --error: red;
+    --hover-gray: #f5f5f5;
+    --border-gray: #e0e0e0;
+    --light-red:rgb(255, 248, 248);
+}
