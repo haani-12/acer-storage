@@ -3,7 +3,8 @@ import { ref, onMounted, onBeforeMount, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { findProductBySlug, products as allProducts } from "@/data/products";
 import AppButton from "@/components/BaseButton.vue";
-
+import NavHeader from "@/components/navheader.vue";
+import footerMain from "@/components/mainFooter.vue";
 const route = useRoute();
 const router = useRouter();
 const product = ref(null);
@@ -58,11 +59,15 @@ const downloads = computed(() => {
 </script>
 
 <template>
-  <section class="py-16">
-    <div class="max-w-6xl mx-auto px-6">
+  <NavHeader />
+  <section class="py-6 sm:py-8 md:py-10 lg:py-12 mx-auto">
+    <div class="max-w-6xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
       <!-- Breadcrumb -->
-      <nav class="text-sm text-[var(--gray-text)] mb-6" aria-label="Breadcrumb">
-        <ol class="list-reset flex items-center gap-2 flex-wrap">
+      <nav
+        class="text-xs sm:text-sm md:text-base text-[var(--gray-text)] mb-4 sm:mb-6"
+        aria-label="Breadcrumb"
+      >
+        <ol class="list-reset flex items-center gap-1 sm:gap-2 flex-wrap">
           <li>
             <router-link to="/" class="hover:text-[var(--primary-hover)]"
               >HOME</router-link
@@ -87,19 +92,23 @@ const downloads = computed(() => {
         id="overview"
         class="bg-[var(--footer-text)] rounded-lg shadow-md overflow-hidden"
       >
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-center">
           <!-- Left: Product image -->
-          <div class="p-6 flex items-center justify-center">
+          <div class="p-4 sm:p-6 lg:p-8 flex items-center justify-center">
             <img
               :src="product.img"
               :alt="product.title"
-              class="w-full max-w-lg object-contain"
+              class="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg object-contain"
             />
           </div>
 
           <!-- Right: Product details -->
-          <div class="p-8 flex flex-col justify-center">
-            <h1 class="text-2xl md:text-4xl font-bold mb-4">{{ product.title }}</h1>
+          <div class="p-4 sm:p-6 lg:p-8 flex flex-col justify-center">
+            <h1
+              class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4"
+            >
+              {{ product.title }}
+            </h1>
 
             <div class="text-[var(--gray-text)] mb-4">
               <template v-if="Array.isArray(product.desc)">
@@ -115,34 +124,38 @@ const downloads = computed(() => {
         </div>
       </div>
       <!-- Tabs / Section Links -->
-      <div v-if="!loading" class="mb-6 my-10 py-4">
-        <div class="bg-[var(--footer-text)] rounded-md px-4">
-          <ul class="flex gap-6 border-b border-[var(--border-gray)]">
+      <div v-if="!loading" class="mb-6 my-6 sm:my-8 lg:my-10 py-3 sm:py-4">
+        <div
+          class="bg-[var(--footer-text)] rounded-md px-3 sm:px-4 lg:px-6 overflow-x-auto"
+        >
+          <ul
+            class="flex gap-3 sm:gap-4 md:gap-6 border-b border-[var(--border-gray)] whitespace-nowrap"
+          >
             <li>
               <router-link
                 :to="{ name: 'home' }"
-                class="py-3 inline-block text-[var(--gray-text)] hover:text-[var(--primary-hover)] font-medium"
+                class="py-2 sm:py-3 inline-block text-xs sm:text-sm md:text-base text-[var(--gray-text)] hover:text-[var(--primary-hover)] font-medium transition"
                 >OVERVIEW</router-link
               >
             </li>
             <li>
               <router-link
                 :to="{ name: 'home' }"
-                class="py-3 inline-block text-[var(--gray-text)] hover:text-[var(--primary-hover)] font-medium"
+                class="py-2 sm:py-3 inline-block text-xs sm:text-sm md:text-base text-[var(--gray-text)] hover:text-[var(--primary-hover)] font-medium transition"
                 >SPECIFICATIONS</router-link
               >
             </li>
             <li>
               <router-link
                 :to="{ name: 'home' }"
-                class="py-3 inline-block text-[var(--gray-text)] hover:text-[var(--primary-hover)] font-medium"
+                class="py-2 sm:py-3 inline-block text-xs sm:text-sm md:text-base text-[var(--gray-text)] hover:text-[var(--primary-hover)] font-medium transition"
                 >DOWNLOADS</router-link
               >
             </li>
             <li>
               <router-link
                 :to="{ name: 'home' }"
-                class="py-3 inline-block text-[var(--gray-text)] hover:text-[var(--primary-hover)] font-medium"
+                class="py-2 sm:py-3 inline-block text-xs sm:text-sm md:text-base text-[var(--gray-text)] hover:text-[var(--primary-hover)] font-medium transition"
                 >RELATED PRODUCTS</router-link
               >
             </li>
@@ -153,12 +166,16 @@ const downloads = computed(() => {
       <section
         id="specifications"
         v-if="!loading"
-        class="mt-10 bg-[var(--footer-text)] p-6 rounded-md"
+        class="mt-8 sm:mt-10 lg:mt-12 bg-[var(--footer-text)] p-4 sm:p-6 lg:p-8 rounded-md"
       >
-        <h2 class="text-lg font-semibold mb-4 text-[var(--primary-text)]">
+        <h2
+          class="text-base sm:text-lg md:text-xl font-semibold mb-3 sm:mb-4 lg:mb-6 text-[var(--primary-text)]"
+        >
           Specifications
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-[var(--gray-text)]">
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 text-[var(--gray-text)]"
+        >
           <div
             v-for="(s, idx) in specs"
             :key="idx"
@@ -174,10 +191,14 @@ const downloads = computed(() => {
       <section
         id="downloads"
         v-if="!loading"
-        class="mt-8 bg-[var(--footer-text)] p-6 rounded-md"
+        class="mt-6 sm:mt-8 lg:mt-10 bg-[var(--footer-text)] p-4 sm:p-6 lg:p-8 rounded-md"
       >
-        <h2 class="text-lg font-semibold mb-4 text-[var(--primary-text)]">Downloads</h2>
-        <div class="flex flex-col md:flex-row gap-4">
+        <h2
+          class="text-base sm:text-lg md:text-xl font-semibold mb-3 sm:mb-4 lg:mb-6 text-[var(--primary-text)]"
+        >
+          Downloads
+        </h2>
+        <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 flex-wrap">
           <div v-for="(d, i) in downloads" :key="i">
             <AppButton :label="d.name" variant="primary" :bgColor="null" />
           </div>
@@ -185,19 +206,31 @@ const downloads = computed(() => {
       </section>
 
       <!-- Related Products -->
-      <section id="related-products" v-if="relatedProducts.length" class="mt-8">
-        <h2 class="text-lg font-semibold mb-4 text-[var(--primary-text)]">
+      <section
+        id="related-products"
+        v-if="relatedProducts.length"
+        class="mt-6 sm:mt-8 lg:mt-10"
+      >
+        <h2
+          class="text-base sm:text-lg md:text-xl font-semibold mb-3 sm:mb-4 lg:mb-6 text-[var(--primary-text)]"
+        >
           Related Products
         </h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div
+          class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6"
+        >
           <router-link
             v-for="rp in relatedProducts"
             :key="rp.slug"
             :to="{ name: 'product-detail', params: { slug: rp.slug } }"
-            class="block bg-[var(--footer-text)] p-4 rounded-md text-center"
+            class="block bg-[var(--footer-text)] p-2 sm:p-4 rounded-md text-center hover:shadow-md transition"
           >
-            <img :src="rp.img" :alt="rp.title" class="mx-auto h-24 object-contain mb-3" />
-            <div class="text-sm font-medium text-[var(--primary-text)]">
+            <img
+              :src="rp.img"
+              :alt="rp.title"
+              class="mx-auto h-16 sm:h-20 md:h-24 object-contain mb-2 sm:mb-3"
+            />
+            <div class="text-xs sm:text-sm font-medium text-[var(--primary-text)]">
               {{ rp.title }}
             </div>
           </router-link>
@@ -205,4 +238,5 @@ const downloads = computed(() => {
       </section>
     </div>
   </section>
+  <footerMain />
 </template>

@@ -48,33 +48,39 @@ const newsletter = {
 <template>
   <footer class="bg-[var(--footer-bg)] text-[var(--footer-text)]">
     <!-- Main Footer Content -->
-    <div class="max-w-7xl mx-auto px-6 py-12">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
+    <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-8 sm:py-10 md:py-12">
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-10 mb-6 sm:mb-8"
+      >
         <!-- Logo/Company Name -->
-        <div class="md:col-span-1 lg:col-span-1">
-          <div class="flex items-center gap-2 mb-4">
+        <div class="sm:col-span-1 lg:col-span-1">
+          <div class="flex items-center gap-2 mb-3 sm:mb-4">
             <div
-              class="w-8 h-8 bg-[var(--acer-green)] rounded-full flex items-center justify-center"
+              class="w-6 sm:w-8 h-6 sm:h-8 bg-[var(--acer-green)] rounded-full flex items-center justify-center"
             >
-              <span class="text-[var(--footer-text)] text-sm font-bold">A</span>
+              <span class="text-[var(--footer-text)] text-xs sm:text-sm font-bold"
+                >A</span
+              >
             </div>
-            <h2 class="text-xl font-bold text-[var(--footer-text)]">Acer</h2>
+            <h2 class="text-lg sm:text-xl font-bold text-[var(--footer-text)]">Acer</h2>
           </div>
-          <p class="text-sm text-[var(--footer-text)] opacity-90">
+          <p class="text-xs sm:text-sm text-[var(--footer-text)] opacity-90">
             Premium memory and storage solutions
           </p>
         </div>
 
         <!-- Footer Sections -->
-        <div v-for="section in footerSections" :key="section.title" class="md:col-span-1">
-          <h3 class="text-[var(--footer-text)] font-semibold mb-4">
+        <div v-for="section in footerSections" :key="section.title" class="sm:col-span-1">
+          <h3
+            class="text-[var(--footer-text)] font-semibold mb-3 sm:mb-4 text-sm sm:text-base"
+          >
             {{ section.title }}
           </h3>
-          <ul class="space-y-2">
+          <ul class="space-y-1 sm:space-y-2">
             <li v-for="link in section.links" :key="link.text">
               <a
                 :href="link.href"
-                class="text-sm text-[var(--footer-text)] hover:text-[var(--primary-hover)] transition"
+                class="text-xs sm:text-sm text-[var(--footer-text)] hover:text-[var(--primary-hover)] transition"
               >
                 {{ link.text }}
               </a>
@@ -83,20 +89,22 @@ const newsletter = {
         </div>
 
         <!-- Newsletter Signup -->
-        <div class="md:col-span-2 lg:col-span-1">
-          <h3 class="text-[var(--footer-text)] font-semibold mb-4">
+        <div class="sm:col-span-2 lg:col-span-1">
+          <h3
+            class="text-[var(--footer-text)] font-semibold mb-3 sm:mb-4 text-sm sm:text-base"
+          >
             {{ newsletter.title }}
           </h3>
-          <form @submit.prevent class="flex flex-col gap-3">
+          <form @submit.prevent class="flex flex-col gap-2 sm:gap-3">
             <input
               type="email"
               :placeholder="newsletter.placeholder"
-              class="px-4 py-2 rounded-md bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+              class="px-3 sm:px-4 py-2 rounded-md bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 text-xs sm:text-sm"
             />
 
             <AppButton
               label="Subscribe"
-              class="mt-4 w-full md:w-auto text-sm px-1 py-2 text-center"
+              class="mt-2 sm:mt-4 w-full lg:w-auto text-xs sm:text-sm px-2 sm:px-3 py-2 text-center"
             />
           </form>
         </div>
@@ -107,10 +115,10 @@ const newsletter = {
   <div class="border-t border-[var(--border-gray)]"></div>
   <!-- Bottom Footer -->
   <div
-    class="px-10 py-8 bg-[var(--primary-text)] flex flex-col md:flex-row justify-between items-center text-xs text-[var(--footer-text)] pt-5"
+    class="px-3 sm:px-6 md:px-10 py-6 sm:py-8 bg-[var(--footer-bg)] flex flex-col md:flex-row justify-between items-center text-xs sm:text-sm text-[var(--footer-text)] gap-4 md:gap-0"
   >
-    <p class="bg-[var(--primary-text)]">&copy; 2025 Acer. All rights reserved.</p>
-    <div class="flex gap-6 mt-4 md:mt-0">
+    <p class="text-center md:text-left">&copy; 2025 Acer. All rights reserved.</p>
+    <div class="flex gap-4 sm:gap-6 text-xs sm:text-sm mt-2 md:mt-0">
       <a
         href="#"
         class="text-[var(--footer-text)] hover:text-[var(--primary-hover)] transition"

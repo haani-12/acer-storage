@@ -1,10 +1,10 @@
 <script setup>
 import { ref, nextTick, computed, onMounted } from "vue";
+import GlobalSearch from '@/components/GlobalSearch.vue'
 import { products as productList } from "@/data/products";
 import { supportItems } from "@/data/support";
 
 const isSearchOpen = ref(false);
-const searchQuery = ref("");
 const isProductsOpen = ref(false);
 const isSupportOpen = ref(false);
 const isAboutOpen = ref(false);
@@ -30,13 +30,12 @@ const previewProducts = computed(() => {
 function openSearch() {
   isSearchOpen.value = true;
   nextTick(() => {
-    document.getElementById("search-input")?.focus();
+    document.querySelector('input[aria-label="Global search"]')?.focus();
   });
 }
 
 function closeSearch() {
   isSearchOpen.value = false;
-  searchQuery.value = "";
 }
 
 function applyTheme(dark) {
@@ -285,20 +284,13 @@ onMounted(() => {
               v-if="isSearchOpen"
               class="text-[var(--gray-text)] absolute right-0 top-0 h-16 flex items-center pr-4 pl-2 bg-[var(--primary-bg)] md:static md:bg-transparent"
             >
+              <GlobalSearch />
               <button
                 @click="closeSearch"
-                class="cursor-pointer text-[var(--gray-text)] hover:text-[var(--gray-hover)] mr-3"
+                class="cursor-pointer text-[var(--gray-text)] hover:text-[var(--gray-hover)] ml-3"
               >
                 ✕
               </button>
-
-              <input
-                id="search-input"
-                v-model="searchQuery"
-                type="text"
-                placeholder="Search..."
-                class="w-48 md:w-64 px-4 py-2 border border-[var(--border-gray)] rounded-full"
-              />
             </div>
           </transition>
 
