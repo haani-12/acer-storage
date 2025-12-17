@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
-
+import AppButton from "./BaseButton.vue";
 // Slide data
 const slides = ref([
   {
@@ -110,13 +110,15 @@ onUnmounted(() => {
               <p class="text-xl md:text-2xl font-medium opacity-90">
                 {{ slide.description }}
               </p>
-              <a
+              <AppButton
+                as="a"
                 :href="slide.link"
-                class="inline-block mt-8 px-8 py-3 bg-[var(--primary-bg)] text-[var(--herobtn-text)] font-bold rounded-lg hover:bg-[var(--primary-bg)] transition-all duration-300 transform hover:scale-105 shadow-lg"
                 target="_blank"
+                :label="slide.cta"
+                class="mt-8"
               >
-                {{ slide.cta }} →
-              </a>
+                <template #iconRight>→</template>
+              </AppButton>
             </div>
           </div>
 

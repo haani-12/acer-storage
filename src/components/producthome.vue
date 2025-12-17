@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from "vue";
-
+import AppButton from "./BaseButton.vue";
 const emit = defineEmits(["explore"]);
 function goToProducts() {
   emit("explore");
@@ -83,7 +83,7 @@ const rows = computed(() => {
 <template>
   <section class="py-16">
     <h2 class="text-center text-3xl md:text-4xl font-extrabold tracking-wide mb-12">
-      PRODUCTS
+      <span class="text-[var(--acer-green)]">PROD</span>UCTS
     </h2>
 
     <div class="max-w-6xl mx-auto px-6">
@@ -110,12 +110,7 @@ const rows = computed(() => {
         </div>
       </div>
       <div class="mt-10 text-center">
-        <button
-          @click="goToProducts"
-          class="cursor-pointer inline-block px-6 py-2.5 border border-[var(--gray-text)] rounded-md text-sm font-medium hover:bg-[var(--primary-hover)] hover:text-[var(--footer-text)] transition-colors"
-        >
-          EXPLORE PRODUCTS
-        </button>
+        <AppButton label="Explore Products" class="mt-8 px-1 text-center" />
       </div>
     </div>
   </section>

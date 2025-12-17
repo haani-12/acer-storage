@@ -89,8 +89,9 @@ onMounted(() => {
 <template>
   <section class="py-12">
     <div class="max-w-4xl mx-auto px-6">
-      <h1 class="text-[var(--acer-green)] pb-6 text-center font-bold text-3xl">
-        Intreact with Our Support Team
+      <h1 class="pb-6 text-center font-bold text-3xl">
+        <span class="text-[var(--acer-green)]">Intreact </span>With Our
+        <span class="text-[var(--acer-green)]">Support</span> Team
       </h1>
       <div v-if="loading" class="text-center text-[var(--gray-text)]">Loading...</div>
 

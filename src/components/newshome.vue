@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from "vue";
-
+import AppButton from "./BaseButton.vue";
 const currentIndex = ref(0);
 let autoSlideInterval = null;
 
@@ -93,7 +93,7 @@ onUnmounted(() => {
     <h2
       class="text-center text-3xl md:text-4xl font-extrabold tracking-wide mb-12 text-[var(--primary-text)]"
     >
-      NEWS
+      <span class="text-[var(--acer-green)]">NE</span>WS
     </h2>
 
     <div class="relative max-w-6xl mx-auto px-6">
@@ -123,12 +123,7 @@ onUnmounted(() => {
         </div>
       </div>
       <div class="mt-10 text-center">
-        <button
-          @click="goTonews"
-          class="cursor-pointer inline-block px-6 py-2.5 text-[var(--primary-text)] border border-[var(--gray-text)] rounded-md text-sm font-medium hover:bg-[var(--primary-hover)] hover:text-[var(--footer-text)] transition-colors"
-        >
-          News Room
-        </button>
+        <AppButton label="News Room" class="mt-8 px-1 text-center" />
       </div>
       <!-- Left Arrow Button -->
       <button

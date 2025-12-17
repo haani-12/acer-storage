@@ -1,4 +1,5 @@
 <script setup>
+import AppButton from "./BaseButton.vue";
 const footerSections = [
   {
     title: "PRODUCTS",
@@ -90,14 +91,13 @@ const newsletter = {
             <input
               type="email"
               :placeholder="newsletter.placeholder"
-              class="px-4 py-2 rounded-md text-gray-900 placeholder-[var(--footer-text)] focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+              class="px-4 py-2 rounded-md bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
             />
-            <button
-              type="submit"
-              class="px-4 py-2 curor-pointer bg-[var(--acer-green)] hover:bg-[var(--primary-hover)] text-[var(--footer-text)] rounded-md font-medium transition"
-            >
-              Subscribe
-            </button>
+
+            <AppButton
+              label="Subscribe"
+              class="mt-4 w-full md:w-auto text-sm px-1 py-2 text-center"
+            />
           </form>
         </div>
       </div>
