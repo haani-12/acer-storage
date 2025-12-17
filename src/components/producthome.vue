@@ -81,9 +81,9 @@ const rows = computed(() => {
 </script>
 
 <template>
-  <section class="py-8 sm:py-12 md:py-16 lg:py-20">
+  <section class="py-8 sm:py-12 md:py-16 lg:py-20 bg-[var(--primary-bg)]">
     <h2
-      class="text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-wide mb-8 sm:mb-10 md:mb-12 lg:mb-16"
+      class="text-[var(--primary-text)] text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-wide mb-8 sm:mb-10 md:mb-12 lg:mb-16"
     >
       <span class="text-[var(--acer-green)]">PROD</span>UCTS
     </h2>
@@ -106,7 +106,7 @@ const rows = computed(() => {
             />
           </div>
           <h3
-            class="text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-3 cursor-pointer hover:text-[var(--primary-hover)] transition"
+            class="text-[var(--gray-text)] text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-3 cursor-pointer hover:text-[var(--primary-hover)] transition"
           >
             {{ product.title }}
           </h3>

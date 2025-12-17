@@ -2,7 +2,8 @@
 import { ref, onBeforeMount, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { findSupportBySlug } from "@/data/support";
-
+import navheader from "@/components/navheader.vue";
+import footerMain from "@/components/mainFooter.vue";
 const route = useRoute();
 const router = useRouter();
 const supportItem = ref(null);
@@ -87,11 +88,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="py-12">
+  <navheader />
+  <section class="py-12 bg-[var(--primary-bg)]">
     <div class="max-w-4xl mx-auto px-6">
-      <h1 class="pb-6 text-center font-bold text-3xl">
-        <span class="text-[var(--acer-green)]">Intreact </span>With Our
-        <span class="text-[var(--acer-green)]">Support</span> Team
+      <h1 class="text-[var(--gray-text)] pb-6 text-center font-bold text-3xl">
+        <span class="bg-[var(--primary-bg)] text-[var(--acer-green)]">Intreact </span>With
+        Our
+        <span class="bg-[var(--primary-bg)] text-[var(--acer-green)]">Support</span> Team
       </h1>
       <div v-if="loading" class="text-center text-[var(--gray-text)]">Loading...</div>
 
@@ -275,6 +278,7 @@ onMounted(() => {
       </div>
     </div>
   </section>
+  <footerMain />
 </template>
 
 <style scoped>

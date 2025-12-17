@@ -1,6 +1,6 @@
 <script setup>
 import { ref, nextTick, computed, onMounted } from "vue";
-import GlobalSearch from '@/components/GlobalSearch.vue'
+import GlobalSearch from "@/components/GlobalSearch.vue";
 import { products as productList } from "@/data/products";
 import { supportItems } from "@/data/support";
 
@@ -68,7 +68,7 @@ onMounted(() => {
 
 <template>
   <nav
-    class="sticky top-0 z-50 bg-[var(--primary-bg)] border-b border-gray-200 py-4 relative shadow-lg"
+    class="sticky top-0 z-50 bg-[var(--primary-bg)] border-b border-[var(--border-gray)] py-4 relative shadow-lg"
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
@@ -95,26 +95,26 @@ onMounted(() => {
             </text>
           </svg>
           <div class="flex items-center">
-            <span class="text-[var(--gray-text)] text-4xl">|</span>
-            <span class="ml-3 text-[var(--gray-text)] text-sm uppercase tracking-wider">
+            <span class="text-[var(--gray-text)] text-2xl">|</span>
+            <span class="ml-2 text-[var(--gray-text)] text-xs uppercase tracking-wider">
               Official <br />
               Licensee
             </span>
           </div>
         </div>
 
-        <!-- Navigation Links -->
+        <!-- Navigation  -->
         <div class="hidden md:flex items-center space-x-12 relative">
           <!-- Products with Dropdown -->
           <div class="relative">
-            <a
-              href="#"
+            <router-link
+              :to="{ name: 'products' }"
               @mouseenter="isProductsOpen = true"
               @mouseleave="isProductsOpen = false"
               class="text-[var(--gray-text)] hover:text-[var(--gray-hover)] text-lg font-medium uppercase tracking-wide transition-colors"
             >
               Products
-            </a>
+            </router-link>
 
             <!-- Dropdown Mega Menu -->
             <transition name="dropdown">
@@ -124,7 +124,7 @@ onMounted(() => {
                 @mouseenter="isProductsOpen = true"
                 @mouseleave="isProductsOpen = false"
               >
-                <div class="bg-[var(--footer-text)] shadow-xl rounded-lg overflow-hidden">
+                <div class="bg-[var(--primary-bg)] shadow-xl rounded-lg overflow-hidden">
                   <div class="grid grid-cols-12 gap-2 py-8 px-12">
                     <!-- Left: Categories (dynamic) -->
                     <div class="col-span-3">
@@ -182,7 +182,7 @@ onMounted(() => {
                 @mouseenter="isSupportOpen = true"
                 @mouseleave="isSupportOpen = false"
               >
-                <div class="bg-[var(--footer-text)] shadow-lg rounded-lg overflow-hidden">
+                <div class="bg-[var(--primary-bg)] shadow-lg rounded-lg overflow-hidden">
                   <ul class="space-y-3 py-2 px-4">
                     <li v-for="item in supportItems" :key="item.slug">
                       <router-link
@@ -200,14 +200,14 @@ onMounted(() => {
 
           <!-- About Us with Dropdown -->
           <div class="relative">
-            <a
-              href="#"
+            <router-link
+              :to="{ name: 'about' }"
               @mouseenter="isAboutOpen = true"
               @mouseleave="isAboutOpen = false"
               class="text-[var(--gray-text)] hover:text-[var(--primary-hover)] text-lg font-medium uppercase tracking-wide transition-colors"
             >
               About Us
-            </a>
+            </router-link>
 
             <!-- About Dropdown -->
             <transition name="dropdown">
@@ -217,7 +217,7 @@ onMounted(() => {
                 @mouseenter="isAboutOpen = true"
                 @mouseleave="isAboutOpen = false"
               >
-                <div class="bg-[var(--footer-text)] shadow-lg rounded-lg overflow-hidden">
+                <div class="bg-[var(--primary-bg)] shadow-lg rounded-lg overflow-hidden">
                   <ul class="space-y-3 py-4 px-4">
                     <li>
                       <a
@@ -303,7 +303,7 @@ onMounted(() => {
             <svg
               v-if="isDark"
               xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
+              class="h-4 w-4"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -315,7 +315,7 @@ onMounted(() => {
             <svg
               v-else
               xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
+              class="h-4 w-4"
               viewBox="0 0 20 20"
               fill="currentColor"
             >

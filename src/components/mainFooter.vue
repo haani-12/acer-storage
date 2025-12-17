@@ -46,7 +46,10 @@ const newsletter = {
 </script>
 
 <template>
-  <footer class="bg-[var(--footer-bg)] text-[var(--footer-text)]">
+  <hr class="text-[var(--gray-text)] shadow-[0_-4px_12px_rgba(0,0,0,0.12)]" />
+  <footer
+    class="bg-[var(--primary-bg)] text-[var(--gray-text)] shadow-[0_-4px_12px_rgba(0,0,0,0.12)]"
+  >
     <!-- Main Footer Content -->
     <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-8 sm:py-10 md:py-12">
       <div
@@ -58,13 +61,11 @@ const newsletter = {
             <div
               class="w-6 sm:w-8 h-6 sm:h-8 bg-[var(--acer-green)] rounded-full flex items-center justify-center"
             >
-              <span class="text-[var(--footer-text)] text-xs sm:text-sm font-bold"
-                >A</span
-              >
+              <span class="text-[var(--gray-text)] text-xs sm:text-sm font-bold">A</span>
             </div>
-            <h2 class="text-lg sm:text-xl font-bold text-[var(--footer-text)]">Acer</h2>
+            <h2 class="text-lg sm:text-xl font-bold text-[var(--gray-text)]">Acer</h2>
           </div>
-          <p class="text-xs sm:text-sm text-[var(--footer-text)] opacity-90">
+          <p class="text-xs sm:text-sm text-[var(--gray-text)] opacity-90">
             Premium memory and storage solutions
           </p>
         </div>
@@ -72,7 +73,7 @@ const newsletter = {
         <!-- Footer Sections -->
         <div v-for="section in footerSections" :key="section.title" class="sm:col-span-1">
           <h3
-            class="text-[var(--footer-text)] font-semibold mb-3 sm:mb-4 text-sm sm:text-base"
+            class="text-[var(--gray-text)] font-semibold mb-3 sm:mb-4 text-sm sm:text-base"
           >
             {{ section.title }}
           </h3>
@@ -80,7 +81,7 @@ const newsletter = {
             <li v-for="link in section.links" :key="link.text">
               <a
                 :href="link.href"
-                class="text-xs sm:text-sm text-[var(--footer-text)] hover:text-[var(--primary-hover)] transition"
+                class="text-xs sm:text-sm text-[var(--gray-text)] hover:text-[var(--primary-hover)] transition"
               >
                 {{ link.text }}
               </a>
@@ -99,12 +100,12 @@ const newsletter = {
             <input
               type="email"
               :placeholder="newsletter.placeholder"
-              class="px-3 sm:px-4 py-2 rounded-md bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 text-xs sm:text-sm"
+              class="px-3 sm:px-4 py-2 rounded-md bg-white text-gray-900 placeholder-[var(--gray-text)] focus:outline-none focus:ring-2 focus:ring-[var(--acer-green)] text-xs sm:text-sm"
             />
 
             <AppButton
               label="Subscribe"
-              class="mt-2 sm:mt-4 w-full lg:w-auto text-xs sm:text-sm px-2 sm:px-3 py-2 text-center"
+              class="w-full lg:w-auto text-xs px-2 py-1 text-center"
             />
           </form>
         </div>

@@ -89,7 +89,9 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="py-8 sm:py-12 md:py-16 lg:py-20 bg-[var(--primary-bg)]">
+  <section
+    class="py-8 sm:py-12 md:py-16 lg:py-20 bg-[var(--primary-bg)] shadow-[0_8px_24px_rgba(0,0,0,0.15)]"
+  >
     <h2
       class="text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-wide mb-8 sm:mb-10 md:mb-12 lg:mb-16 text-[var(--primary-text)]"
     >
@@ -110,20 +112,31 @@ onUnmounted(() => {
             :key="item.id"
             class="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition"
           >
-            <img :src="item.img" :alt="item.title" class="w-full h-32 sm:h-40 md:h-48 lg:h-56 object-cover" />
+            <img
+              :src="item.img"
+              :alt="item.title"
+              class="w-full h-32 sm:h-40 md:h-48 lg:h-56 object-cover"
+            />
             <div class="p-3 sm:p-4 md:p-6">
               <h3
                 class="text-sm sm:text-base md:text-lg lg:text-xl font-semibold mb-2 text-[var(--primary-text)] cursor-pointer hover:text-[var(--primary-hover)] transition"
               >
                 {{ item.title }}
               </h3>
-              <p class="text-xs sm:text-sm md:text-base text-[var(--gray-text)] line-clamp-2">{{ item.desc }}</p>
+              <p
+                class="text-xs sm:text-sm md:text-base text-[var(--gray-text)] line-clamp-2"
+              >
+                {{ item.desc }}
+              </p>
             </div>
           </article>
         </div>
       </div>
       <div class="mt-6 sm:mt-8 md:mt-10 lg:mt-12 text-center">
-        <AppButton label="News Room" class="mt-4 sm:mt-6 px-2 sm:px-4 text-center text-sm sm:text-base" />
+        <AppButton
+          label="News Room"
+          class="mt-4 sm:mt-6 px-2 sm:px-4 text-center text-sm sm:text-base"
+        />
       </div>
       <!-- Left Arrow Button -->
       <button

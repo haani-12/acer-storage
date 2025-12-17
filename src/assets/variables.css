@@ -18,13 +18,13 @@
 /* Dark theme variables applied when <html> has class "dark" */
 html.dark {
     --acer-green: #3dd176;
-    --gray-text: #bfc0c0;
+    --gray-text: #fff;
     --gray-hover: #ffffff;
     --primary-text: #e6eef6;
     --primary-hover: #2fa85a;
     --footer-bg: #0f1724;
     --footer-text: #e6eef6;
-    --primary-bg: #071021;
+    --primary-bg: rgba(14, 8, 8, 0.952);
     --herobtn-text: #dff6e7;
     --light-green: #0b2f19;
     --error: #ff6b6b;
