@@ -1,5 +1,7 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from "vue";
+import SliderbtnLeft from "./SliderbtnLeft.vue";
+import SliderbtnRight from "./SliderbtnRight.vue";
 import AppButton from "./BaseButton.vue";
 const currentIndex = ref(0);
 let autoSlideInterval = null;

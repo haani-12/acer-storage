@@ -1,5 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
+import SliderbtnLeft from "./SliderbtnLeft.vue";
+import SliderbtnRight from "./SliderbtnRight.vue";
 import AppButton from "./BaseButton.vue";
 // Slide data
 const slides = ref([
@@ -145,52 +147,23 @@ onUnmounted(() => {
         </div>
       </TransitionGroup>
 
-      <!-- Navigation Buttons -->
-      <button
-        @click="
-          prevSlide();
-          resetAutoSlide();
+      <SliderbtnLeft
+        @prev="
+          () => {
+            prevSlide();
+            resetAutoSlide();
+          }
         "
-        class="cursor-pointer absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300 z-10"
-        aria-label="Previous slide"
-      >
-        <svg
-          class="w-6 h-6 text-[var(--footer-text)]"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M15 19l-7-7 7-7"
-          />
-        </svg>
-      </button>
+      />
 
-      <button
-        @click="
-          nextSlide();
-          resetAutoSlide();
+      <SliderbtnRight
+        @next="
+          () => {
+            nextSlide();
+            resetAutoSlide();
+          }
         "
-        class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center cursor-pointer justify-center hover:bg-white/30 transition-all duration-300 z-10"
-        aria-label="Next slide"
-      >
-        <svg
-          class="w-6 h-6 text-white"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M9 5l7 7-7 7"
-          />
-        </svg>
-      </button>
+      />
 
       <!-- Slide Indicators -->
       <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-3 z-10">

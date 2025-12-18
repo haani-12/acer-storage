@@ -74,26 +74,28 @@ onMounted(() => {
       <div class="flex items-center justify-between h-16">
         <!-- Logo and Official Licensee -->
         <div class="flex items-center">
-          <svg
-            width="90"
-            height="40"
-            viewBox="0 0 415 100"
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-auto items-center"
-          >
-            <path d="M0 50 L30 0 L60 50 L30 100 Z" fill="#00A99D" />
-            <text
-              x="80"
-              y="65"
-              font-family="Arial, sans-serif"
-              font-size="90"
-              font-weight="bold"
-              fill="#00A99D"
-              class="items-center"
+          <router-link :to="{ name: 'home' }">
+            <svg
+              width="90"
+              height="40"
+              viewBox="0 0 415 100"
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-auto items-center"
             >
-              acer
-            </text>
-          </svg>
+              <path d="M0 50 L30 0 L60 50 L30 100 Z" fill="#00A99D" />
+              <text
+                x="80"
+                y="65"
+                font-family="Arial, sans-serif"
+                font-size="90"
+                font-weight="bold"
+                fill="#00A99D"
+                class="items-center"
+              >
+                acer
+              </text>
+            </svg>
+          </router-link>
           <div class="flex items-center">
             <span class="text-[var(--gray-text)] text-2xl">|</span>
             <span class="ml-2 text-[var(--gray-text)] text-xs uppercase tracking-wider">
@@ -303,7 +305,7 @@ onMounted(() => {
             <svg
               v-if="isDark"
               xmlns="http://www.w3.org/2000/svg"
-              class="h-4 w-4"
+              class="h-6 w-6"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -315,7 +317,7 @@ onMounted(() => {
             <svg
               v-else
               xmlns="http://www.w3.org/2000/svg"
-              class="h-4 w-4"
+              class="h-6 w-6"
               viewBox="0 0 20 20"
               fill="currentColor"
             >

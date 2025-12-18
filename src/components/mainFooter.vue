@@ -100,7 +100,7 @@ const newsletter = {
             <input
               type="email"
               :placeholder="newsletter.placeholder"
-              class="px-3 sm:px-4 py-2 rounded-md bg-white text-gray-900 placeholder-[var(--gray-text)] focus:outline-none focus:ring-2 focus:ring-[var(--acer-green)] text-xs sm:text-sm"
+              class="px-3 sm:px-4 py-2 rounded-md bg-[var(--primary-bg)] dark:text-[var(--gray-text)] text-[var(--gray-text)] placeholder-[var(--gray-text)] focus:outline-none focus:ring-2 focus:ring-[var(--acer-green)] text-xs sm:text-sm"
             />
 
             <AppButton

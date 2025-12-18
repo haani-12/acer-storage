@@ -92,9 +92,8 @@ onMounted(() => {
   <section class="py-12 bg-[var(--primary-bg)]">
     <div class="max-w-4xl mx-auto px-6">
       <h1 class="text-[var(--gray-text)] pb-6 text-center font-bold text-3xl">
-        <span class="bg-[var(--primary-bg)] text-[var(--acer-green)]">Intreact </span>With
-        Our
-        <span class="bg-[var(--primary-bg)] text-[var(--acer-green)]">Support</span> Team
+        <span class="text-[var(--acer-green)]">Intreact </span>With Our
+        <span class="text-[var(--acer-green)]">Support</span> Team
       </h1>
       <div v-if="loading" class="text-center text-[var(--gray-text)]">Loading...</div>
 
@@ -122,10 +121,7 @@ onMounted(() => {
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <!-- Name Field -->
                 <div>
-                  <label
-                    for="name"
-                    class="block text-[var(--gray-text)] font-semibold mb-2"
-                  >
+                  <label for="name" class="block font-semibold mb-2">
                     Name <span class="text-[var(--error)]">*</span>
                   </label>
                   <input
@@ -152,10 +148,7 @@ onMounted(() => {
 
                 <!-- Email Field -->
                 <div>
-                  <label
-                    for="email"
-                    class="block text-[var(--gray-text)] font-semibold mb-2"
-                  >
+                  <label for="email" class="block text font-semibold mb-2">
                     Email <span class="text-[var(--error)]">*</span>
                   </label>
                   <input
@@ -183,10 +176,7 @@ onMounted(() => {
 
               <!-- Subject Field -->
               <div>
-                <label
-                  for="subject"
-                  class="block text-[var(--gray-text)] font-semibold mb-2"
-                >
+                <label for="subject" class="block text font-semibold mb-2">
                   Subject <span class="text-[var(--error)]">*</span>
                 </label>
                 <input
@@ -202,10 +192,7 @@ onMounted(() => {
                   ]"
                 />
                 <transition name="slide-fade">
-                  <p
-                    v-if="submitted && errors.subject"
-                    class="mt-1 text-[var(--error)] text-sm"
-                  >
+                  <p v-if="submitted && errors.subject" class="mt-1 text-sm">
                     {{ errors.subject }}
                   </p>
                 </transition>
@@ -213,10 +200,7 @@ onMounted(() => {
 
               <!-- Description Field -->
               <div>
-                <label
-                  for="description"
-                  class="block text-[var(--gray-text)] font-semibold mb-2"
-                >
+                <label for="description" class="block text font-semibold mb-2">
                   Description <span class="text-[var(--error)]">*</span>
                 </label>
                 <textarea
@@ -251,7 +235,7 @@ onMounted(() => {
                 </button>
                 <router-link
                   to="/"
-                  class="px-6 py-2 border border-[var(--gray-text)] text-[var(--gray-text)] rounded-md font-semibold hover:bg-[var(--hover-gray)] transition"
+                  class="px-6 py-2 border border-[var(--gray-text)] rounded-md font-semibold hover:bg-[var(--hover-gray)] hover:text-[var(--primary-text)] transition"
                 >
                   Cancel
                 </router-link>

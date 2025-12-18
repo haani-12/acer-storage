@@ -1,23 +1,21 @@
+<script setup>
+import { products } from "@/data/products";
+import navheader from "@/components/navheader.vue";
+import mainFooter from "@/components/mainFooter.vue";
+import BreadCrumb from "@/components/BreadCrumb.vue";
+</script>
 <template>
   <navheader />
   <main class="min-h-screen bg-[var(--primary-bg)] text-[var(--gray-text)]">
     <section class="py-6 sm:py-8 md:py-10 lg:py-12 mx-auto">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Breadcrumb -->
-        <nav
-          class="text-xs sm:text-sm md:text-base text-[var(--gray-text)] mb-6 sm:mb-8"
-          aria-label="Breadcrumb"
-        >
-          <ol class="list-reset flex items-center gap-1 sm:gap-2 flex-wrap">
-            <li>
-              <router-link to="/" class="hover:text-[var(--primary-hover)]"
-                >HOME</router-link
-              >
-            </li>
-            <li class="text-[var(--gray-text)] opacity-60">/</li>
-            <li class="font-semibold text-[var(--primary-text)]">PRODUCTS</li>
-          </ol>
-        </nav>
+        <BreadCrumb
+          :items="[
+            { text: 'Home', href: '/' },
+            { text: 'Products', href: '/products' },
+          ]"
+        />
 
         <h1 class="text-3xl sm:text-4xl font-bold mb-8">All Products</h1>
 
@@ -52,12 +50,6 @@
   </main>
   <mainFooter />
 </template>
-
-<script setup>
-import { products } from "@/data/products";
-import navheader from "@/components/navheader.vue";
-import mainFooter from "@/components/mainFooter.vue";
-</script>
 
 <style scoped>
 .line-clamp-2 {

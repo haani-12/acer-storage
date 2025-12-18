@@ -4,6 +4,7 @@ import { useRoute, useRouter } from "vue-router";
 import { findProductBySlug, products as allProducts } from "@/data/products";
 import AppButton from "@/components/BaseButton.vue";
 import NavHeader from "@/components/navheader.vue";
+import BreadCrumb from "@/components/BreadCrumb.vue";
 import footerMain from "@/components/mainFooter.vue";
 const route = useRoute();
 const router = useRouter();
@@ -63,28 +64,7 @@ const downloads = computed(() => {
   <section class="py-6 sm:py-8 md:py-10 lg:py-12 mx-auto bg-[var(--primary-bg)]">
     <div class="max-w-6xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
       <!-- Breadcrumb -->
-      <nav
-        class="text-xs sm:text-sm md:text-base text-[var(--gray-text)] mb-4 sm:mb-6"
-        aria-label="Breadcrumb"
-      >
-        <ol class="list-reset flex items-center gap-1 sm:gap-2 flex-wrap">
-          <li>
-            <router-link to="/" class="hover:text-[var(--primary-hover)]"
-              >HOME</router-link
-            >
-          </li>
-          <li class="text-[var(--gray-text)] opacity-60">/</li>
-          <li>
-            <router-link to="/" class="hover:text-[var(--primary-hover)]"
-              >PRODUCTS</router-link
-            >
-          </li>
-          <li class="text-[var(--gray-text)] opacity-60">/</li>
-          <li class="font-semibold text-[var(--primary-text)] truncate max-w-[60%]">
-            {{ product.title }}
-          </li>
-        </ol>
-      </nav>
+      <BreadCrumb :productTitle="product.title" />
       <div v-if="loading" class="text-center text-[var(--gray-text)]">Loading...</div>
 
       <div
