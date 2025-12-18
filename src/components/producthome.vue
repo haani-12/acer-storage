@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from "vue";
-
+import AppButton from "./BaseButton.vue";
 const emit = defineEmits(["explore"]);
 function goToProducts() {
   emit("explore");
@@ -81,41 +81,47 @@ const rows = computed(() => {
 </script>
 
 <template>
-  <section class="py-16">
-    <h2 class="text-center text-3xl md:text-4xl font-extrabold tracking-wide mb-12">
-      PRODUCTS
+  <section class="py-8 sm:py-12 md:py-16 lg:py-20 bg-[var(--primary-bg)]">
+    <h2
+      class="text-[var(--primary-text)] text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-wide mb-8 sm:mb-10 md:mb-12 lg:mb-16"
+    >
+      <span class="text-[var(--acer-green)]">PROD</span>UCTS
     </h2>
 
-    <div class="max-w-6xl mx-auto px-6">
+    <div class="max-w-6xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
       <div
         v-for="(row, rIndex) in rows"
         :key="rIndex"
-        class="grid grid-cols-1 md:grid-cols-3 gap-12 items-start"
-        :class="{ 'mt-16': rIndex > 0 }"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-start"
+        :class="{ 'mt-8 sm:mt-10 md:mt-12 lg:mt-16': rIndex > 0 }"
       >
         <div v-for="product in row" :key="product.id" class="text-center">
-          <div class="h-36 flex items-center justify-center mb-6">
-            <img :src="product.img" :alt="product.alt" class="max-h-36 object-contain" />
+          <div
+            class="h-24 sm:h-28 md:h-32 lg:h-36 flex items-center justify-center mb-3 sm:mb-4 md:mb-6"
+          >
+            <img
+              :src="product.img"
+              :alt="product.alt"
+              class="max-h-24 sm:max-h-28 md:max-h-32 lg:max-h-36 object-contain"
+            />
           </div>
           <h3
-            class="text-lg font-semibold mb-3 cursor-pointer hover:text-[var(--primary-hover)]"
+            class="text-[var(--gray-text)] text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-3 cursor-pointer hover:text-[var(--primary-hover)] transition"
           >
             {{ product.title }}
           </h3>
-          <p class="text-sm text-[var(--gray-text)] leading-relaxed">
+          <p class="text-xs sm:text-sm text-[var(--gray-text)] leading-relaxed">
             <span v-for="(line, i) in product.desc" :key="i"
               >{{ line }}<br v-if="i < product.desc.length - 1"
             /></span>
           </p>
         </div>
       </div>
-      <div class="mt-10 text-center">
-        <button
-          @click="goToProducts"
-          class="cursor-pointer inline-block px-6 py-2.5 border border-[var(--gray-text)] rounded-md text-sm font-medium hover:bg-[var(--primary-hover)] hover:text-[var(--footer-text)] transition-colors"
-        >
-          EXPLORE PRODUCTS
-        </button>
+      <div class="mt-8 sm:mt-10 md:mt-12 lg:mt-16 text-center">
+        <AppButton
+          label="Explore Products"
+          class="mt-4 sm:mt-6 md:mt-8 px-2 sm:px-4 text-center text-sm sm:text-base"
+        />
       </div>
     </div>
   </section>

@@ -1,14 +1,15 @@
 <script setup>
-import { ref, nextTick, computed } from "vue";
+import { ref, nextTick, computed, onMounted } from "vue";
+import GlobalSearch from "@/components/GlobalSearch.vue";
 import { products as productList } from "@/data/products";
 import { supportItems } from "@/data/support";
 
 const isSearchOpen = ref(false);
-const searchQuery = ref("");
 const isProductsOpen = ref(false);
 const isSupportOpen = ref(false);
 const isAboutOpen = ref(false);
 const hoveredCategory = ref(null);
+const isDark = ref(false);
 
 const categories = [
   { key: "pcie", label: "PCIe M.2 SSD", slugs: ["ut300", "up300"] },
@@ -29,65 +30,93 @@ const previewProducts = computed(() => {
 function openSearch() {
   isSearchOpen.value = true;
   nextTick(() => {
-    document.getElementById("search-input")?.focus();
+    document.querySelector('input[aria-label="Global search"]')?.focus();
   });
 }
 
 function closeSearch() {
   isSearchOpen.value = false;
-  searchQuery.value = "";
 }
+
+function applyTheme(dark) {
+  const el = document.documentElement;
+  if (dark) el.classList.add("dark");
+  else el.classList.remove("dark");
+  try {
+    localStorage.setItem("theme", dark ? "dark" : "light");
+  } catch (e) {}
+}
+
+function toggleTheme() {
+  isDark.value = !isDark.value;
+  applyTheme(isDark.value);
+}
+
+onMounted(() => {
+  let saved = null;
+  try {
+    saved = localStorage.getItem("theme");
+  } catch (e) {}
+  if (saved) {
+    isDark.value = saved === "dark";
+  } else if (window.matchMedia) {
+    isDark.value = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+  applyTheme(isDark.value);
+});
 </script>
 
 <template>
   <nav
-    class="sticky top-0 z-50 bg-[var(--primary-bg)] border-b border-gray-200 py-4 relative shadow-lg"
+    class="sticky top-0 z-50 bg-[var(--primary-bg)] border-b border-[var(--border-gray)] py-4 relative shadow-lg"
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
         <!-- Logo and Official Licensee -->
         <div class="flex items-center">
-          <svg
-            width="90"
-            height="40"
-            viewBox="0 0 415 100"
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-auto items-center"
-          >
-            <path d="M0 50 L30 0 L60 50 L30 100 Z" fill="#00A99D" />
-            <text
-              x="80"
-              y="65"
-              font-family="Arial, sans-serif"
-              font-size="90"
-              font-weight="bold"
-              fill="#00A99D"
-              class="items-center"
+          <router-link :to="{ name: 'home' }">
+            <svg
+              width="90"
+              height="40"
+              viewBox="0 0 415 100"
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-auto items-center"
             >
-              acer
-            </text>
-          </svg>
+              <path d="M0 50 L30 0 L60 50 L30 100 Z" fill="#00A99D" />
+              <text
+                x="80"
+                y="65"
+                font-family="Arial, sans-serif"
+                font-size="90"
+                font-weight="bold"
+                fill="#00A99D"
+                class="items-center"
+              >
+                acer
+              </text>
+            </svg>
+          </router-link>
           <div class="flex items-center">
-            <span class="text-[var(--gray-text)] text-4xl">|</span>
-            <span class="ml-3 text-[var(--gray-text)] text-sm uppercase tracking-wider">
+            <span class="text-[var(--gray-text)] text-2xl">|</span>
+            <span class="ml-2 text-[var(--gray-text)] text-xs uppercase tracking-wider">
               Official <br />
               Licensee
             </span>
           </div>
         </div>
 
-        <!-- Navigation Links -->
+        <!-- Navigation  -->
         <div class="hidden md:flex items-center space-x-12 relative">
           <!-- Products with Dropdown -->
           <div class="relative">
-            <a
-              href="#"
+            <router-link
+              :to="{ name: 'products' }"
               @mouseenter="isProductsOpen = true"
               @mouseleave="isProductsOpen = false"
               class="text-[var(--gray-text)] hover:text-[var(--gray-hover)] text-lg font-medium uppercase tracking-wide transition-colors"
             >
               Products
-            </a>
+            </router-link>
 
             <!-- Dropdown Mega Menu -->
             <transition name="dropdown">
@@ -97,7 +126,7 @@ function closeSearch() {
                 @mouseenter="isProductsOpen = true"
                 @mouseleave="isProductsOpen = false"
               >
-                <div class="bg-[var(--footer-text)] shadow-xl rounded-lg overflow-hidden">
+                <div class="bg-[var(--primary-bg)] shadow-xl rounded-lg overflow-hidden">
                   <div class="grid grid-cols-12 gap-2 py-8 px-12">
                     <!-- Left: Categories (dynamic) -->
                     <div class="col-span-3">
@@ -155,7 +184,7 @@ function closeSearch() {
                 @mouseenter="isSupportOpen = true"
                 @mouseleave="isSupportOpen = false"
               >
-                <div class="bg-[var(--footer-text)] shadow-lg rounded-lg overflow-hidden">
+                <div class="bg-[var(--primary-bg)] shadow-lg rounded-lg overflow-hidden">
                   <ul class="space-y-3 py-2 px-4">
                     <li v-for="item in supportItems" :key="item.slug">
                       <router-link
@@ -173,14 +202,14 @@ function closeSearch() {
 
           <!-- About Us with Dropdown -->
           <div class="relative">
-            <a
-              href="#"
+            <router-link
+              :to="{ name: 'about' }"
               @mouseenter="isAboutOpen = true"
               @mouseleave="isAboutOpen = false"
               class="text-[var(--gray-text)] hover:text-[var(--primary-hover)] text-lg font-medium uppercase tracking-wide transition-colors"
             >
               About Us
-            </a>
+            </router-link>
 
             <!-- About Dropdown -->
             <transition name="dropdown">
@@ -190,7 +219,7 @@ function closeSearch() {
                 @mouseenter="isAboutOpen = true"
                 @mouseleave="isAboutOpen = false"
               >
-                <div class="bg-[var(--footer-text)] shadow-lg rounded-lg overflow-hidden">
+                <div class="bg-[var(--primary-bg)] shadow-lg rounded-lg overflow-hidden">
                   <ul class="space-y-3 py-4 px-4">
                     <li>
                       <a
@@ -228,7 +257,7 @@ function closeSearch() {
         </div>
 
         <!-- Search Area -->
-        <div class="flex items-center">
+        <div class="flex items-center gap-2">
           <transition name="fade">
             <button
               v-if="!isSearchOpen"
@@ -255,24 +284,47 @@ function closeSearch() {
           <transition name="search">
             <div
               v-if="isSearchOpen"
-              class="absolute right-0 top-0 h-16 flex items-center pr-4 pl-2 bg-[var(--primary-bg)] md:static md:bg-transparent"
+              class="text-[var(--gray-text)] absolute right-0 top-0 h-16 flex items-center pr-4 pl-2 bg-[var(--primary-bg)] md:static md:bg-transparent"
             >
+              <GlobalSearch />
               <button
                 @click="closeSearch"
-                class="cursor-pointer text-[var(--gray-text)] hover:text-[var(--gray-hover)] mr-3"
+                class="cursor-pointer text-[var(--gray-text)] hover:text-[var(--gray-hover)] ml-3"
               >
                 ✕
               </button>
-
-              <input
-                id="search-input"
-                v-model="searchQuery"
-                type="text"
-                placeholder="Search..."
-                class="w-48 md:w-64 px-4 py-2 border border-gray-300 rounded-full"
-              />
             </div>
           </transition>
+
+          <!-- Theme toggle -->
+          <button
+            @click="toggleTheme"
+            :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
+            class="items-center ml-2 p-2 rounded-full text-[var(--gray-text)] hover:text-[var(--primary-hover)] focus:outline-none"
+          >
+            <svg
+              v-if="isDark"
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <!-- sun icon (shows when dark, to switch to light) -->
+              <path
+                d="M10 3.5a.75.75 0 01.75-.75h0a.75.75 0 010 1.5H10.75A.75.75 0 0110 3.5zM10 15.25a.75.75 0 01.75-.75h0a.75.75 0 010 1.5H10.75a.75.75 0 01-.75-.75zM3.5 10a.75.75 0 01-.75-.75v0a.75.75 0 011.5 0V9.25A.75.75 0 013.5 10zM15.25 10a.75.75 0 01-.75-.75v0a.75.75 0 011.5 0V9.25a.75.75 0 01-.75.75zM5.22 5.22a.75.75 0 01-1.06 0 .75.75 0 010-1.06.75.75 0 011.06 0 .75.75 0 010 1.06zM14.78 14.78a.75.75 0 01-1.06 0 .75.75 0 010-1.06.75.75 0 011.06 0 .75.75 0 010 1.06zM5.22 14.78a.75.75 0 01-1.06 0 .75.75 0 010-1.06.75.75 0 011.06 0 .75.75 0 010 1.06zM14.78 5.22a.75.75 0 01-1.06 0 .75.75 0 010-1.06.75.75 0 011.06 0 .75.75 0 010 1.06zM10 6.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7z"
+              />
+            </svg>
+            <svg
+              v-else
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <!-- moon icon (shows when light, to switch to dark) -->
+              <path d="M17.293 13.293a8 8 0 11-10.586-10.586 7 7 0 1010.586 10.586z" />
+            </svg>
+          </button>
         </div>
       </div>
     </div>

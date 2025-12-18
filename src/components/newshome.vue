@@ -1,6 +1,8 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from "vue";
-
+import SliderbtnLeft from "./SliderbtnLeft.vue";
+import SliderbtnRight from "./SliderbtnRight.vue";
+import AppButton from "./BaseButton.vue";
 const currentIndex = ref(0);
 let autoSlideInterval = null;
 
@@ -89,12 +91,16 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="py-12 bg-[var(--primary-bg)]">
-    <h2 class="text-center text-3xl md:text-4xl font-extrabold tracking-wide mb-12">
-      NEWS
+  <section
+    class="py-8 sm:py-12 md:py-16 lg:py-20 bg-[var(--primary-bg)] shadow-[0_8px_24px_rgba(0,0,0,0.15)]"
+  >
+    <h2
+      class="text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-wide mb-8 sm:mb-10 md:mb-12 lg:mb-16 text-[var(--primary-text)]"
+    >
+      <span class="text-[var(--acer-green)]">NE</span>WS
     </h2>
 
-    <div class="relative max-w-6xl mx-auto px-6">
+    <div class="relative max-w-6xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
       <!-- News Carousel -->
       <div class="flex overflow-hidden">
         <div
@@ -108,33 +114,39 @@ onUnmounted(() => {
             :key="item.id"
             class="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition"
           >
-            <img :src="item.img" :alt="item.title" class="w-full h-48 object-cover" />
-            <div class="p-4">
+            <img
+              :src="item.img"
+              :alt="item.title"
+              class="w-full h-32 sm:h-40 md:h-48 lg:h-56 object-cover"
+            />
+            <div class="p-3 sm:p-4 md:p-6">
               <h3
-                class="text-lg font-semibold mb-2 text-[var(--primary-text)] cursor-pointer hover:text-[var(--primary-hover)]"
+                class="text-sm sm:text-base md:text-lg lg:text-xl font-semibold mb-2 text-[var(--primary-text)] cursor-pointer hover:text-[var(--primary-hover)] transition"
               >
                 {{ item.title }}
               </h3>
-              <p class="text-sm text-[var(--gray-text)]">{{ item.desc }}</p>
+              <p
+                class="text-xs sm:text-sm md:text-base text-[var(--gray-text)] line-clamp-2"
+              >
+                {{ item.desc }}
+              </p>
             </div>
           </article>
         </div>
       </div>
-      <div class="mt-10 text-center">
-        <button
-          @click="goTonews"
-          class="cursor-pointer inline-block px-6 py-2.5 border border-[var(--gray-text)] rounded-md text-sm font-medium hover:bg-[var(--primary-hover)] hover:text-[var(--footer-text)] transition-colors"
-        >
-          News Room
-        </button>
+      <div class="mt-6 sm:mt-8 md:mt-10 lg:mt-12 text-center">
+        <AppButton
+          label="News Room"
+          class="mt-4 sm:mt-6 px-2 sm:px-4 text-center text-sm sm:text-base"
+        />
       </div>
       <!-- Left Arrow Button -->
       <button
         @click="prevSlide"
-        class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-14 md:-translate-x-20 w-10 h-10 md:w-12 md:h-12 bg-[var(--acer-green)] cursor-pointer hover:bg-[var(--primary-hover)] text-[var(--footer-text)] rounded-full flex items-center justify-center transition"
+        class="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 sm:-translate-x-14 md:-translate-x-16 lg:-translate-x-20 w-8 sm:w-10 md:w-12 lg:w-14 h-8 sm:h-10 md:h-12 lg:h-14 bg-[var(--acer-green)] cursor-pointer hover:bg-[var(--primary-hover)] text-[var(--footer-text)] rounded-full items-center justify-center transition"
       >
         <svg
-          class="w-5 h-5 md:w-6 md:h-6"
+          class="w-4 sm:w-5 md:w-6"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -151,10 +163,10 @@ onUnmounted(() => {
       <!-- Right Arrow Button -->
       <button
         @click="nextSlide"
-        class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-14 md:translate-x-20 w-10 h-10 md:w-12 md:h-12 bg-[var(--acer-green)] cursor-pointer hover:bg-[var(--primary-hover)] text-[var(--footer-text)] rounded-full flex items-center justify-center transition"
+        class="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 sm:translate-x-14 md:translate-x-16 lg:translate-x-20 w-8 sm:w-10 md:w-12 lg:w-14 h-8 sm:h-10 md:h-12 lg:h-14 bg-[var(--acer-green)] cursor-pointer hover:bg-[var(--primary-hover)] text-[var(--footer-text)] rounded-full flex items-center justify-center transition"
       >
         <svg
-          class="w-5 h-5 md:w-6 md:h-6"
+          class="w-4 sm:w-5 md:w-6"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
